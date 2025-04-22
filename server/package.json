@@ -1,0 +1,32 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Backend API for the Auscultate web app, built with Node.js, Express, and Keras.",
+  "main": "src/index.js",
+  "scripts": {
+    "lint": "eslint . --ext .js",
+    "lint:fix": "eslint . --ext .js --fix",
+    "dev": "nodemon src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^4.21.2",
+    "express-validator": "^7.2.1",
+    "mysql2": "^3.14.0",
+    "path": "^0.12.7",
+    "sequelize": "^6.37.6",
+    "url": "^0.11.4"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.24.0",
+    "eslint": "^9.24.0",
+    "eslint-plugin-jest": "^28.11.0",
+    "eslint-plugin-node": "^11.1.0",
+    "nodemon": "^3.1.9"
+  }
+}

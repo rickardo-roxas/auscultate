@@ -1,0 +1,49 @@
+name: Client CI/CD
+
+on:
+    push:
+        branches: [ development, main ]
+        paths:
+            - 'client/**'
+    pull_request:
+        branches: [ development, main ]
+        paths:
+            - 'client/**'
+
+jobs:
+    build-and-test:
+        runs-on: ubuntu-latest
+        defaults:
+            run:
+                working-directory: ./client
+
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                node-version: '22'
+                cache: 'npm'
+                cache-dependency-path: client/package-lock.json
+            
+            - name: Clear npm cache
+              run: npm cache clean --force
+            
+            - name: Install Dependencies
+              run: npm install
+            
+            - name: Lint
+              run: npm run lint
+            
+            - name: Build
+              run: npm run build
+
+            - name: Upload build artifacts
+              if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop'
+              uses: actions/upload-artifact@v4
+              with:
+                name: client-build
+                path: ./client/dist
+    
+    # TODO: Deployment job. To fix when hosting has been established.
