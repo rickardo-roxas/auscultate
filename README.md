@@ -1,12 +1,105 @@
-# React + Vite
+# Auscultate
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Description
+Auscultate is a web-based AI agent that classifies lung diseases based on lung sounds. The AI model is a dual-channel CNN-LSTM model where spatial and temporal features (MFCC and Chroma) are extracted from a given audio file containing the respiratory cycles. 
 
-Currently, two official plugins are available:
+## Table of Contents
+- [Description](#description)
+- [Features](#features)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Configuration](#configuration)
+- [Project Structure](#project-structure)
+- [Usage](#usage)
+- [Technology Stack](#technology-stack)
+- [API Documentation](#api-documentation)
+- [Roadmap](#roadmap)
+- [Contact](#contact)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
+- Modern and user-friendly UI
+- File upload (.wav and .mp3)
+- Lung sound feature extraction (MFCC & Chroma)
+- Lung disease classification
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Prerequisites
+Before you begin, ensure you have the following installed:
+
+  - Node.js (v18+)
+  - npm or Yarn
+  - Docker
+  - Git
+  - MySQL
+  - VS Code (optional, but recommended)
+    
+### Installation
+
+#### 1. Clone the Repository
+```bash
+git clone https://github.com/rickardo-roxas/auscultate.git
+cd auscultate
+```
+
+#### 2. Install Dependencies
+```bash
+cd client && npm install
+cd ../server && npm install
+```
+
+#### 3. Setup
+```bash
+# Development build
+docker compose -f docker-compose.dev.yml
+
+# Production build
+docker compose -f docker-compose.prod.yml up
+```
+
+### Usage
+
+### Project Structure
+```bash
+speech-scape-cordillera/
+│
+├── client/              # React + Vite frontend
+├── server/              # Node + Express backend
+├── docker-compose.dev.yml
+├── docker-compose.prod.yml
+└── README.md
+```
+
+### API Endpoints
+
+To define
+
+## Technology Stack
+- **Server**: Node.js, Express.js
+- **Model Server**: Python, Tensorflow, Keras
+- **Client**: React.js, Vite, Leaflet.js
+- **Containerization**: Docker
+
+## Roadmap
+- [ ] Deploy client to Vercel 
+- [ ] Deploy server to Render 
+- [ ] Deploy model server to Render 
+- [ ] Add confidence level of results
+
+## License
+To define.
+
+## Contact
+**Developers**
+- DE TORRES, John Rey
+- JASMIN, Ramon Emmiel
+- LACANILAO, Marvin Patrick
+- RILLERA, Hans
+- ROXAS, Johan Rickardo
+- SICCUAN, Sebastian
+- TANK, Rithik
+
+## Acknowledgments
+- ICBHI 2017
+- Doctors of Baguio City (unnamed for data privacy)
