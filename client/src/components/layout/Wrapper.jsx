@@ -9,9 +9,9 @@
 function Wrapper({ children }) {
     return (
         <>
-            <Navbar />
+            {/* <Navbar /> */}
             <main>{children}</main>
-            <Footer />
+            {/* <Footer /> */}
         </>
     );
 }
