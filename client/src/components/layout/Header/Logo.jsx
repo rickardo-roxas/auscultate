@@ -16,7 +16,9 @@ function Logo() {
     return (
         <Link to="/" className={styles.logo}>
             <Image 
+                
                 alt="Auscultate logo"
+                className={'className'}
                 src={logo}
                 width={ 120 }
                 height={ 120 }
