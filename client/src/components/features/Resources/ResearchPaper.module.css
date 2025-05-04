@@ -1,0 +1,79 @@
+.container {
+  background-color: #f7fafd;
+  padding: 3rem;
+  margin-bottom: 0;
+}
+
+.heading {
+  font-family: var(--inter);
+  font-size: var(--font-size-xxl);
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 10px;
+}
+
+.card {
+  background-color: #ffffff; 
+  border-radius: 10px;
+  overflow: hidden; 
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.titleText {
+  font-family: var(--inter);
+  color: var(--primary);
+  font-size: var(--font-size-xxl);
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.abstractPreview {
+  font-family: var(--inter);
+  font-size: 1rem;
+  color: black;
+  margin-top: 0.5rem;
+}
+
+.readButton {
+  background-color: #38bdf8;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-family: var(--inter);
+  font-weight: 600;
+  border-radius: 5px;
+  float: right;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.readButton:hover {
+  background-color: #0ea5e9;
+  transform: scale(1.05);
+}
+
+.bodyContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: relative;
+}
+
+.bodyContent p {
+  font-family: var(--inter);
+}
+
+.buttonContainer {
+  text-align: right;
+  margin-top: 10px;
+}
+
+.separator {
+  border-top: 3px solid var(--primary);
+  margin: 1rem 0;
+}
