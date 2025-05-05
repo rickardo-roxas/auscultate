@@ -9,7 +9,4 @@ router.post('/');
 // Get the results of the prediction/classification.
 router.get('/results');
 
-// Download the classification results as PDF.
-router.get('/download');
-
 export default router;
