@@ -1,0 +1,58 @@
+.heroSection {
+    background-color: #f4f5f7;
+    padding: 3rem 1rem;
+    text-align: center;
+  }
+  
+  .title {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin-bottom: 1rem;
+  }
+  
+  .subtitle {
+    font-family: var(--inter);
+    font-size: var(--font-size-lg);
+    color: #5A6A7E;
+    margin-bottom: 2rem;
+  }
+  
+  .buttonGroup {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+.primaryBtn {
+    background-color: var(--secondary) !important; 
+    color: white !important;
+    height: 50px !important;
+    width: 130px !important;
+    border: none !important;
+    font-family: var(--inter) !important;
+    font-size: var(--font-size-sm) !important;
+    font-weight: 600 !important;
+  }
+  
+  .secondaryBtn {
+    background-color: transparent !important;
+    color: var(--primary) !important;
+    height: 50px !important;
+    width: 130px !important;
+    border: 2px solid var(--primary) !important;
+    font-family: var(--inter) !important;
+    font-size: var(--font-size-sm) !important;
+    font-weight: 600 !important;
+  }
+  
+  .primaryBtn:hover {
+    background-color: #0056b3 !important; 
+  }
+  
+  .secondaryBtn:hover {
+    background-color: #e6f2ff !important; 
+    color: #0056b3 !important;
+  }
+  
+  
