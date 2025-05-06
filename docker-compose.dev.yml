@@ -1,0 +1,55 @@
+services:
+  model-server:
+    build:
+      context: ./model-server
+      dockerfile: Dockerfile.dev
+    container_name: model-server
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./model-server:/usr/src/app
+    env_file:
+      - model-server/.env.dev
+    networks:
+      - app-network
+    restart: always
+
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile.dev
+    container_name: client
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./client:/app
+      - /app/node_modules
+    env_file:
+      - client/.env.dev
+    networks:
+      - app-network
+    depends_on:
+      - model-server
+    restart: always
+
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile.dev
+    container_name: server
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./server:/app
+      - /app/node_modules
+    env_file:
+      - server/.env.dev
+    networks:
+      - app-network
+    depends_on:
+      - model-server
+    restart: always
+
+networks:
+  app-network:
+    driver: bridge
