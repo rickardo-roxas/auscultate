@@ -1,4 +1,4 @@
-import ResponseHandler from '../utils/responseHandler.js';
+import ResponseHandler from '../utils/responseHandler.util.js';
 
 /**
  * Handles file upload and classification.

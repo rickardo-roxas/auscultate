@@ -1,5 +1,5 @@
 import ModelService from "../services/model.service.js";
-import ResponseHandler from "../utils/responseHandler.js";
+import ResponseHandler from "../utils/responseHandler.util.js";
 
 /**
  * Handles the prediction result.

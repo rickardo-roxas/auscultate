@@ -1,4 +1,4 @@
-import ResponseHandler from '../utils/responseHandler.js';
+import ResponseHandler from '../utils/responseHandler.util.js';
 
 /**
  * @description - Controller for handling home page requests.
@@ -6,7 +6,7 @@ import ResponseHandler from '../utils/responseHandler.js';
  * @param {*} res - The response object
  * @param {*} next - The next middleware function
  */
-const index = async (req, res, next) => {
+const index = async (_req, res, next) => {
     try {
         ResponseHandler.success(res, {
             status: 200,
