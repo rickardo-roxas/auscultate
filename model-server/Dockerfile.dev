@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y \
     libxrender-dev && \
     rm -rf /var/lib/apt/lists/*
 
-# Install TensorFlow system dependencies for Python
+# TensorFlow system deps
 RUN apt-get update && apt-get install -y \
     libopenblas-dev \
     liblapack-dev \
@@ -18,15 +18,12 @@ RUN apt-get update && apt-get install -y \
     gfortran && \
     rm -rf /var/lib/apt/lists/*
 
-# Create working directory
 WORKDIR /usr/src/app
 
-# Install Python dependencies
 COPY requirements.txt .
 RUN pip install --upgrade pip && pip install -r requirements.txt
 
-# Copy app code
 COPY . .
+COPY .env.dev .env.dev
 
-# Expose port and run
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+CMD ["sh", "-c", "uvicorn app.main:app --host $HOST --port $PORT --reload"]

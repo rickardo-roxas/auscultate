@@ -1,10 +1,27 @@
+import os
+from dotenv import load_dotenv
 from fastapi import FastAPI
-from app.routes import predict_routes
+import tensorflow as tf
 
-app = FastAPI(
-    title="Model Server",
-    description="A server hosting the dual-channel CNN-LSTM model for lung disease classification.",
-    version="1.0",
-)
+# Load .env.dev
+load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), '..', '.env.dev'))
 
-app.include_router(predict_routes.router, prefix="/predict", tags=["Prediction"])
+# Read config from env
+HOST = os.getenv("HOST", "0.0.0.0")
+PORT = int(os.getenv("PORT", 8000))
+DEBUG = os.getenv("DEBUG", "True").lower() == "true"
+MODEL_PATH = os.getenv("MODEL_PATH")
+LOG_LEVEL = os.getenv("LOG_LEVEL", "info")
+
+# Load model
+if not MODEL_PATH or not os.path.exists(MODEL_PATH):
+    raise FileNotFoundError(f"MODEL_PATH is invalid or missing: {MODEL_PATH}")
+
+model = tf.keras.models.load_model(MODEL_PATH)
+
+# Init FastAPI
+app = FastAPI()
+
+@app.get("/")
+async def root():
+    return {"message": "Model server running", "model_path": MODEL_PATH}
