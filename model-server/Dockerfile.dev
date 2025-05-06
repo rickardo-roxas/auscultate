@@ -1,0 +1,29 @@
+FROM python:3.10-slim
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    ffmpeg \
+    libsndfile1 \
+    libglib2.0-0 \
+    libsm6 \
+    libxext6 \
+    libxrender-dev && \
+    rm -rf /var/lib/apt/lists/*
+
+# TensorFlow system deps
+RUN apt-get update && apt-get install -y \
+    libopenblas-dev \
+    liblapack-dev \
+    libatlas-base-dev \
+    gfortran && \
+    rm -rf /var/lib/apt/lists/*
+
+WORKDIR /usr/src/app
+
+COPY requirements.txt .
+RUN pip install --upgrade pip && pip install -r requirements.txt
+
+COPY . .
+COPY .env.dev .env.dev
+
+CMD ["sh", "-c", "uvicorn app.main:app --host $HOST --port $PORT --reload"]

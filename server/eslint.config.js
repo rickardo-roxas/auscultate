@@ -4,7 +4,7 @@ import globals from 'globals';
 
 export default [
   {
-    ignores: ['dist', 'node_modules', 'test/api.test.js', 'src/configs/Index.config.js'],
+    ignores: ['dist', 'node_modules', 'test/api.test.js', 'src/configs/index.config.js'],
   },
   {
     files: ['**/*.js'],
