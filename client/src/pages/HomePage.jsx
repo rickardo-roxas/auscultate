@@ -1,16 +1,14 @@
 import React from 'react';
-import Navbar from '../components/layout/Header/Navbar';
-import Footer from '../components/layout/Footer/Footer';
 import AuscultateHero from '../components/features/Hero/AuscultateHero';
+import FileUpload from '../components/features/FileUpload/FileUpload';
 
 function HomePage() {
   return (
     <>
-      <Navbar />
-      <main>
-        <AuscultateHero />
-      </main>
-      <Footer />
+      <AuscultateHero />
+      <div id='upload'>
+        <FileUpload />
+      </div>
     </>
   );
 }
