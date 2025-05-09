@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './AuscultateHero.module.css';
 import { Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 
 function AuscultateHero() {
@@ -11,8 +12,12 @@ function AuscultateHero() {
         AuscUltate uses AI technology to analyze and detect abnormalities in lung sounds
       </p>
       <div className={styles.buttonGroup}>
-        <Button variant="primary" className={styles.primaryBtn}>Upload Sound</Button>
-        <Button variant="outline-primary" className={styles.secondaryBtn}>Learn More</Button>
+        <a href='#upload'>
+          <Button variant="primary" className={styles.primaryBtn}>Upload Sound</Button>
+        </a>
+        <Link to='/how-it-works'>
+          <Button variant="outline-primary" className={styles.secondaryBtn}>Learn More</Button>
+        </Link>
       </div>
     </section>
   );
