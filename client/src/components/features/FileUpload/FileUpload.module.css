@@ -1,0 +1,45 @@
+.card {
+    margin: 5rem 10rem;
+    height: 25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card h3, p {
+    text-align: center;
+    font-family: var(--inter);
+}
+
+.dropzone {
+    border: 2px dashed #ccc;
+    border-radius: 1rem;
+    padding: 2rem;
+    margin-top: 1rem;
+    background-color: #f8f9fa;
+    cursor: pointer;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.error {
+border-color: red;
+}
+
+.iconContainer {
+margin-bottom: 1rem;
+}
+
+.errorText {
+color: red;
+font-weight: 500;
+}
+
+.supportText {
+display: block;
+margin-top: 1rem;
+color: #dc3545;
+font-size: 0.875rem;
+}
