@@ -9,7 +9,7 @@ function AuscultateHero() {
     <section className={styles.heroSection}>
       <h1 className={styles.title}>AUSCULTATE</h1>
       <p className={styles.subtitle}>
-        AuscUltate uses AI technology to analyze and detect abnormalities in lung sounds
+        Harnessing AI to detect lung diseases from your lung sounds—helping you stay ahead in healthcare.
       </p>
       <div className={styles.buttonGroup}>
         <a href='#upload'>
