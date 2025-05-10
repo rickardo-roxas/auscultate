@@ -4,6 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { useDropzone } from 'react-dropzone';
 import { BsFileEarmarkMusic } from 'react-icons/bs';
+import useFetch from '../../../hooks/useFetch.hook';
 import styles from './FileUpload.module.css';
 
 const MAX_SIZE = 10 * 1024 * 1024; // 10 MB file max size
@@ -11,6 +12,10 @@ const MAX_SIZE = 10 * 1024 * 1024; // 10 MB file max size
 function FileUpload() {
     const [error, setError] = useState('');
     const [file, setFile] = useState(null);
+
+    const { data, loading, error: fetchError, refetch } = useFetch('/upload', {
+        method: 'POST',
+    }, true);
 
     const onDrop = useCallback((acceptedFiles, fileRejections) => {
         setError('');
@@ -33,6 +38,27 @@ function FileUpload() {
         multiple: false,
         onDrop
     });
+
+    const handleUpload = async () => {
+        if (!file) {
+            setError('No file selected.');
+            return;
+        }
+        
+        const formData = new FormData();
+        formData.append('file', file);
+
+        const result = await refetch({
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            },
+            data: formData,
+        });
+
+        if (!result) {
+            setError('Failed to upload. Please try again.')
+        }
+    }
 
     return (
         <Form>
@@ -59,6 +85,21 @@ function FileUpload() {
                         Browse Files
                     </Button>
                 </div>
+
+                {file && (
+                    <div className="mt-3 text-start">
+                        <p className="mb-1"><strong>Selected file:</strong> {file.name}</p>
+                        <p className="text-muted small">Size: {(file.size / 1024 / 1024).toFixed(2)} MB</p>
+                    </div>
+                )}
+
+                <Button 
+                    variant="success" 
+                    onClick={handleUpload} 
+                    disabled={!file || loading}
+                >
+                    {loading ? 'Uploading...' : 'Upload File'}
+                </Button>
             </Card> 
         </Form>   
     );
