@@ -9,6 +9,10 @@ import styles from './FileUpload.module.css';
 
 const MAX_SIZE = 10 * 1024 * 1024; // 10 MB file max size
 
+/**
+ * FileUpload page for uploading audio files.
+ * @returns {JSX.Element} - Rendered FileUpload page
+ */
 function FileUpload() {
     const [error, setError] = useState('');
     const [file, setFile] = useState(null);
@@ -17,6 +21,7 @@ function FileUpload() {
         method: 'POST',
     }, true);
 
+    // Handle file drop
     const onDrop = useCallback((acceptedFiles, fileRejections) => {
         setError('');
         setFile(null);
@@ -30,6 +35,7 @@ function FileUpload() {
         setFile(selectedFile);
     }, []);
 
+    // Handle file drop 
     const { getRootProps, getInputProps, isDragActive } = useDropzone({
         accept: {
             'audio/*': ['.mp3','.wav']
@@ -39,6 +45,7 @@ function FileUpload() {
         onDrop
     });
 
+    // Handle file upload
     const handleUpload = async () => {
         if (!file) {
             setError('No file selected.');
@@ -81,25 +88,27 @@ function FileUpload() {
                             : "Drag & drop and audio file here, or click to select one."
                         }
                     </p>
-                    <Button variant="primary">
-                        Browse Files
-                    </Button>
                 </div>
 
-                {file && (
-                    <div className="mt-3 text-start">
-                        <p className="mb-1"><strong>Selected file:</strong> {file.name}</p>
-                        <p className="text-muted small">Size: {(file.size / 1024 / 1024).toFixed(2)} MB</p>
+                <div className={styles.actionContainer}>
+                    <div className={styles.fileInfo}>
+                        {file && (
+                            <>
+                                <p className="mb-1"><strong>Selected file:</strong> {file.name}</p>
+                                <p className="text-muted small">Size: {(file.size / 1024 / 1024).toFixed(2)} MB</p>
+                            </>
+                        )}
                     </div>
-                )}
 
-                <Button 
-                    variant="success" 
-                    onClick={handleUpload} 
-                    disabled={!file || loading}
-                >
-                    {loading ? 'Uploading...' : 'Upload File'}
-                </Button>
+                    <Button 
+                        variant="success" 
+                        onClick={handleUpload} 
+                        disabled={!file || loading}
+                        className={styles.uploadButton}
+                    >
+                        {loading ? 'Uploading...' : 'Upload File'}
+                    </Button>
+                </div>
             </Card> 
         </Form>   
     );
