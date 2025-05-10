@@ -17,7 +17,7 @@ function FileUpload() {
     const [error, setError] = useState('');
     const [file, setFile] = useState(null);
 
-    const { data, loading, error: fetchError, refetch } = useFetch('/upload', {
+    const { loading, refetch } = useFetch('/upload', {
         method: 'POST',
     }, true);
 
