@@ -13,7 +13,7 @@ function FAQs() {
             <div className={styles.question}>What audio file formats are supported?</div>
           </Accordion.Header>
           <Accordion.Body>
-            We currently support WAV formats. Ensure your audio quality is clear for the best analysis results.
+          We currently support .WAV and .MP3 files. For optimal analysis, please ensure that your audio files are clear and of good quality.
           </Accordion.Body>
 
         </Accordion.Item>
@@ -22,7 +22,7 @@ function FAQs() {
             <div className={styles.question}>How accurate is the detection algorithm?</div>
           </Accordion.Header>
           <Accordion.Body>
-            Our model has been trained on thousands of annotated samples and achieves high accuracy on benchmark datasets like ICBHI 2017. However, results may vary depending on input quality.
+            The model has been trained on thousands of annotated samples and achieves high accuracy on recognized datasets like ICBHI 2017. Please note that accuracy may vary based on the quality of the input audio.
           </Accordion.Body>
 
         </Accordion.Item>
@@ -31,7 +31,7 @@ function FAQs() {
             <div className={styles.question}>Is my uploaded data stored permanently?</div>
           </Accordion.Header>
           <Accordion.Body>
-            No. We prioritize user privacy and do not store your data permanently. All uploads are used only for real-time analysis.
+            No, your privacy is a top priority. We do not store any uploaded data permanently. Audio files are processed only for real-time analysis and are not retained after analysis is complete.
           </Accordion.Body>
         </Accordion.Item>
 
@@ -40,7 +40,7 @@ function FAQs() {
             <div className={styles.question}>Can I use the platform for clinical diagnosis?</div>
           </Accordion.Header>
           <Accordion.Body>
-            Auscultate is intended for research and educational purposes only. It should not replace professional medical advice, diagnosis, or treatment. Always consult a licensed healthcare provider.
+          Auscultate is designed for research and educational purposes only. It is not intended to replace professional medical advice or diagnosis. Always consult a licensed healthcare provider for any medical concerns.
           </Accordion.Body>
         </Accordion.Item>
 

@@ -9,19 +9,19 @@ const cards = [
     title: 'Upload',
     description: (
       <>
-        Users upload <strong>recorded lung sounds</strong> in WAV format through our platform.
+        Easily upload your <strong>recorded lung sounds</strong> in .WAV or .MP3 format via our user-friendly platform, ensuring your data is ready for analysis.
       </>
     ),
   },
   {
     icon: <FaSearch size={50} />,
     title: 'Analysis',
-    description: 'The system extracts MFCC and Chroma features and uses a CNN-LSTM model to detect lung diseases based on lung sounds.',
+    description: '        Our advanced AI system analyzes your lung sounds by extracting key features and leveraging a deep learning model to detect potential lung diseases with high accuracy.',
   },
   {
     icon: <FaClipboardCheck size={50} />,
     title: 'Results',
-    description: 'Users receive results highlighting the lung disease with visual and textual interpretation.',
+    description: 'Receive detailed results that provide clear visual and textual insights into any detected lung diseases, helping you make informed health decisions.',
   },
 ];
 

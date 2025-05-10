@@ -66,11 +66,13 @@
 
 .bodyContent p {
   font-family: var(--inter);
+  text-align: left;
 }
 
 .buttonContainer {
   text-align: right;
   margin-top: 10px;
+  word-wrap: break-word; 
 }
 
 .separator {
