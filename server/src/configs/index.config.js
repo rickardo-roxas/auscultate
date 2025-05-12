@@ -32,7 +32,7 @@ const config = {
     LOG_LEVEL: required('LOG_LEVEL'),
 
     // Model Server
-    
+    MODEL_SERVER_URL: required('MODEL_SERVER_URL'),
 };
 
 export default config;
