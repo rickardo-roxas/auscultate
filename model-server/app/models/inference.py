@@ -1,4 +1,4 @@
-from models.model_loader import model
+from app.models.model_loader import model
 import numpy as np
 
 def predict_disease(mfcc, chroma):
