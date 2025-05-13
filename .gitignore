@@ -42,3 +42,5 @@ Thumbs.db
 
 # React Component Preview
 previewConfig.json
+
+__pycache__/
