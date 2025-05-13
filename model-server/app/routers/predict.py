@@ -1,6 +1,6 @@
 from fastapi import APIRouter, UploadFile, File, HTTPException
-from services.feature_extractor import extract_features_from_upload
-from models.inference import predict_disease
+from app.services.feature_extractor import extract_features_from_upload
+from app.models.inference import predict_disease
 from fastapi.responses import JSONResponse
 
 router = APIRouter()
