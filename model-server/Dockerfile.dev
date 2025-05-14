@@ -1,0 +1,38 @@
+FROM python:3.10-slim
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    ffmpeg \
+    libsndfile1 \
+    libglib2.0-0 \
+    libsm6 \
+    libxext6 \
+    libxrender-dev \
+    libopenblas-dev \
+    liblapack-dev \
+    libatlas-base-dev \
+    gfortran \
+    && rm -rf /var/lib/apt/lists/*
+
+# Set work directory
+WORKDIR /usr/src/app
+
+# Set environment variables (used in CMD)
+ENV HOST=0.0.0.0
+ENV PORT=8000
+ENV PYTHONPATH=/usr/src/app
+
+# Install Python dependencies
+COPY requirements.txt .
+RUN pip install --upgrade pip && pip install --no-cache-dir -r requirements.txt
+
+# Copy source code and env
+COPY ./app/models /usr/src/app/app/models
+COPY . .
+COPY .env.dev .env.dev
+
+RUN python -c "import os; model_path = os.getenv('MODEL_PATH', '/usr/src/app/app/models/version-4A.keras'); print(f'Checking model at: {model_path}'); print(f'Model exists: {os.path.exists(model_path)}'); print(f'Directory contents: {os.listdir(os.path.dirname(model_path))}')"
+
+
+# Default command to run the app
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
