@@ -1,0 +1,49 @@
+name: Server CI/CD
+
+on:
+    push:
+        branches: [ development, main ]
+        paths:
+            - 'server/**'
+    pull_request:
+        branches: [ development, main ]
+        paths:
+            - 'server/**'
+
+jobs:
+    build-and-test:
+        runs-on: ubuntu-latest
+        defaults:
+            run:
+                working-directory: ./server
+
+        services:
+            mysql:
+                image: mysql:latest
+                env:
+                    MYSQL_ROOT_PASSWORD: root
+                    MYSQL_DATABASE: speech_scape
+                ports:
+                    - 3306:3306
+                options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+        
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                node-version: '22'
+                cache: 'npm'
+                cache-dependency-path: server/package-lock.json
+
+            - name: Clear npm cache
+              run: npm cache clean --force
+    
+            - name: Install Dependencies
+              run: npm ci
+            
+            - name: Lint
+              run: npm run lint
+
+        #TODO: Deployment
