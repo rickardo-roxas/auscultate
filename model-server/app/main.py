@@ -1,7 +1,6 @@
-import os
 from fastapi import FastAPI
 from app.routers.predict import router as predict_router
-from app.configs.config import config
+from app.configs import config
 
 app = FastAPI(title="Lung Disease Classification API")
 
