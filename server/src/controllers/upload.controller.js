@@ -1,4 +1,5 @@
 import ResponseHandler from '../utils/responseHandler.util.js';
+import modelClient from '../configs/axios.config.js';
 
 /**
  * Handles file upload and classification.
@@ -8,18 +9,21 @@ import ResponseHandler from '../utils/responseHandler.util.js';
  */
 const uploadFile = async (req, res, next) => {
     try {
-        const result = await ModelService.classify(req.file);
+        const file = req.file;
+        
+        // Send the file to the model server for processing
+        const formData = new FormData();
+        formData.append('file', file.buffer, file.originalname);
 
-        if (!result) {
-            return ResponseHandler.errorResponse(res, {
-                status: 400,
-                message: 'File upload failed. Please upload an audio file with respiratory cycles.',
-            });
-        }
+        // Send the file to the model-server's /upload endpoint
+        const response = await modelClient.post('/upload', formData, {
+            headers: formData.getHeaders(),
+        });
 
+        // Forward the response back to the client
         return ResponseHandler.successResponse(res, {
-            message: 'File uploaded successfully.',
-            data: result,
+            message: 'File uploaded successfully and processed.',
+            data: response.data,  // Returning the checkpoints from the Model-Server
         });
     } catch (err) {
         err.statusCode = 500;

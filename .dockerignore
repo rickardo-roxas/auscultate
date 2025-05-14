@@ -3,7 +3,6 @@ dist/
 npm-debug.log
 .vite
 .DS_Store
-.env
 .dockerignore
 .eslintcache
 .gitignore
