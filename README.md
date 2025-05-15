@@ -99,5 +99,11 @@ To define
 - Doctors of Baguio City (unnamed for data privacy)
 
 ## Other Links
-This Google Drive contains the different versions of the datasets and models (with their respective results and evaluation metrics).
+
+### Google Drive
+This Google Drive contains the different versions of the datasets, models (with their respective results and evaluation metrics), and the different Google Colab files.
 https://drive.google.com/drive/folders/18w_lnOJYH6tF_6An0uNC98COr2K1IdM-?usp=drive_link
+
+### Agent Repository
+https://github.com/rickardo-roxas/auscultate.git
+https://github.com/rickardo-roxas/auscultate
