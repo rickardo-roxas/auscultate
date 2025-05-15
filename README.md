@@ -63,10 +63,10 @@ docker compose -f docker-compose.prod.yml up
 ### Project Structure
 ```bash
 speech-scape-cordillera/
-│
+│ auscultate
 ├── client/              # React + Vite frontend
 ├── server/              # Node + Express backend
-
+├── model-server/        # FastAPI backend
 ├── docker-compose.dev.yml
 ├── docker-compose.prod.yml
 └── README.md
