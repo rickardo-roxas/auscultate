@@ -9,13 +9,13 @@ Auscultate is a web-based AI agent that classifies lung diseases based on lung s
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
-  - [Configuration](#configuration)
+  - [Usage](#usage)
+  - [API Endpoints](#api-endpoints)
 - [Project Structure](#project-structure)
 - [Usage](#usage)
 - [Technology Stack](#technology-stack)
-- [API Documentation](#api-documentation)
-- [Roadmap](#roadmap)
 - [Contact](#contact)
+- [Other Links](#other-links)
 
 ## Features
 - Modern and user-friendly UI
@@ -77,18 +77,12 @@ To define
 
 ## Technology Stack
 - **Server**: Node.js, Express.js
-- **Model Server**: Python, Tensorflow, Keras
-- **Client**: React.js, Vite, Leaflet.js
+- **Model Server**: FastAPI, Tensorflow, Keras
+- **Client**: React.js, Vite
 - **Containerization**: Docker
 
-## Roadmap
-- [ ] Deploy client to Vercel 
-- [ ] Deploy server to Render 
-- [ ] Deploy model server to Render 
-- [ ] Add confidence level of results
-
 ## License
-To define.
+
 
 ## Contact
 **Developers**
@@ -103,3 +97,7 @@ To define.
 ## Acknowledgments
 - ICBHI 2017
 - Doctors of Baguio City (unnamed for data privacy)
+
+## Other Links
+This Google Drive contains the different versions of the datasets and models (with their respective results and evaluation metrics).
+https://drive.google.com/drive/folders/18w_lnOJYH6tF_6An0uNC98COr2K1IdM-?usp=drive_link
