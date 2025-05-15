@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { useDropzone } from 'react-dropzone';
 import { BsFileEarmarkMusic } from 'react-icons/bs';
-import ProgressModal from './ProgressModal/ProgressModal';
+import ProgressModal from '../ProgressModal/ProgressModal';
 import useFetch from '../../../hooks/useFetch.hook';
 import styles from './FileUpload.module.css';
 
@@ -19,6 +19,7 @@ function FileUpload() {
     const [file, setFile] = useState(null);
     const [showModal, setShowModal] = useState(false);
     const [progress, setProgress] = useState({ stage: '', percent: 0 });
+
     const { loading, refetch } = useFetch('/upload', {
         method: 'POST',
     }, true);
@@ -53,38 +54,44 @@ function FileUpload() {
             setError('No file selected.');
             return;
         }
-
+    
         setShowModal(true);
         
         const formData = new FormData();
         formData.append('file', file);
-
+    
         const result = await refetch({
             headers: {
                 'Content-Type': 'multipart/form-data',
             },
             data: formData,
         });
-
+    
         if (!result) {
-            setError('Failed to upload. Please try again.')
+            setError('Failed to upload. Please try again.');
+            return;
         }
-
-        // Simulate the SSE call to get progress updates
-        const eventSource = new EventSource(`/api/progress/${result.uploadId}`);
-        eventSource.onmessage = (event) => {
-            const data = JSON.parse(event.data);
-            setProgress(data); // Update progress state
-
-            // Close modal when progress reaches 100%
-            if (data.percent === 100) {
-                setTimeout(() => {
-                    setShowModal(false);
-                    eventSource.close();
-                }, 2000);  // Wait 2 seconds before closing
-            }
-        };
-    }
+    
+        // Find the final result with the classification
+        const classificationResult = result?.data?.checkpoints?.find(checkpoint => checkpoint.result);
+    
+        // If result is found, pass it to the modal
+        if (classificationResult) {
+            setProgress({
+                label: classificationResult.result.label,
+                confidence: classificationResult.result.confidence,
+            });
+        } else {
+            setError('Failed to retrieve classification result.');
+        }
+    
+        // Close modal when progress reaches 100%
+        if (classificationResult?.progress === 100) {
+            setTimeout(() => {
+                setShowModal(false);
+            }, 2000);  // Wait 2 seconds before closing
+        }
+    }; 
 
     return (
         <>
